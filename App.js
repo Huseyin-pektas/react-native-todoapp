@@ -33,13 +33,10 @@ function App () {
     <SafeAreaView >
       
       <ScrollView>
-        <Header />
         <View>
          <Text>
-          burası yeni oluşturduğum projemdir
+          burası yeni oluşturduğum projemdir week1
          </Text>
-          
-         
         </View>
       </ScrollView>
     </SafeAreaView>
