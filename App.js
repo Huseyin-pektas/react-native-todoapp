@@ -22,17 +22,18 @@ import generalStyles from "./src/utils/generalStyle"
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import Input from './src/components/input';
 import { colors } from './src/utils/constants';
+import Todo from './src/components/todo';
 
 
 function App () {
   const [text, setText] = useState ("")
   const [todos, setTodos] = useState([])
   const addTodo =()=> {
-    const NewTodo =()=>{
-      id: String(new Date().getTime())
-      text: text
-      date:new Date()
-      complate:false
+    const NewTodo = {
+      id: String(new Date().getTime()),
+      text: text,
+      date:new Date(),
+      complated:true
     }
     setTodos([...todos,NewTodo])
     setText("")
@@ -59,9 +60,8 @@ function App () {
          </Text>
             </View>
           ):(
-            
-            <ScrollView>
-            <Text>Todos dizisi dolu</Text>
+            <ScrollView style={styles.ScrollView}>
+            {todos?.map(todo =>(<Todo key={todo?.id} todo={todo}/>))}
           </ScrollView>
           )}
 
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     marginHorizontal:20,
     marginVertical:10,
     flex:1,
-    borderWidth:1
+    //borderWidth:1
   },
   emptyText:{
     fontSize:20,
