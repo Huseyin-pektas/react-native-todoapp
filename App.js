@@ -29,15 +29,24 @@ function App () {
   const [text, setText] = useState ("")
   const [todos, setTodos] = useState([])
   const addTodo =()=> {
+    if (text === "") {
+      Alert.alert("Hata"," Boş todo eklenemez",[
+        {
+          text:"Anladım"
+        }
+      ])
+      return;
+    }
     const NewTodo = {
       id: String(new Date().getTime()),
       text: text,
       date:new Date(),
-      complated:true
+      complated:false
     }
     setTodos([...todos,NewTodo])
-    setText("")
+    setText("") 
   }
+ 
 
   return (
     <SafeAreaView style={[generalStyles.body,generalStyles.bgWhite]} >
@@ -61,7 +70,12 @@ function App () {
             </View>
           ):(
             <ScrollView style={styles.ScrollView}>
-            {todos?.map(todo =>(<Todo key={todo?.id} todo={todo}/>))}
+            {todos?.map((todo,index) =>(<Todo 
+            key={todo?.id} 
+            todo={todo} 
+            todos={todos}
+            index={index}
+             setTodos={setTodos}/>))}
           </ScrollView>
           )}
 
