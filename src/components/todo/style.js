@@ -17,6 +17,11 @@ const styles = StyleSheet.create({
         color:colors.textColor,
         
     },
+    
+    linetrought:{
+        color:"red",
+        textDecorationLine:"line-through"
+    },
     date:{
         color:"black",
         fontWeight:"bold",
